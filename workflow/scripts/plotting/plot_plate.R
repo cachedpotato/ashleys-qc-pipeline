@@ -30,6 +30,11 @@ if (plate_type == 96) {
             Well_position <- c(Well_position, tmp)
         }
     }
+} else {
+    for (i in 1:plate_type) {
+        tmp <- paste0(LETTERS[i], plate_type)
+        Well_position <- c(Well_position, tmp)
+    }
 }
 
 # pdf("TEST_ashleys_plate_predictions.pdf")
