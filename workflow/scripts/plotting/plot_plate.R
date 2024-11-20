@@ -30,17 +30,21 @@ if (plate_type == 96) {
             Well_position <- c(Well_position, tmp)
         }
     }
-} else {
-    for (i in 1:plate_type) {
-        tmp <- paste0(LETTERS[i], plate_type)
-        Well_position <- c(Well_position, tmp)
+} else { #Filler
+    for (i in 1:12)
+    {
+        for (j in 1:8)
+        {
+            tmp <- paste0(LETTERS[j], i)
+            Well_position <- c(Well_position, tmp)
+        }
     }
 }
 
 # pdf("TEST_ashleys_plate_predictions.pdf")
 pdf(snakemake@output[["predictions"]])
 
-ashleys_data$Well_position <- Well_position
+ashleys_data$Well_position <- Well_position[1:plate_type]
 
 raw_map(
     data = ashleys_data$prediction,
