@@ -44,7 +44,7 @@ if (plate_type == 96) {
 # pdf("TEST_ashleys_plate_predictions.pdf")
 pdf(snakemake@output[["predictions"]])
 
-ashleys_data$Well_position <- Well_position[1:plate_type]
+ashleys_data$Well_position <- Well_position[1:num_samples]
 
 raw_map(
     data = ashleys_data$prediction,
@@ -59,7 +59,7 @@ dev.off()
 
 # pdf("TEST_ashleys_plate_probabilities.pdf")
 pdf(snakemake@output[["probabilities"]])
-ashleys_data$Well_position <- Well_position
+ashleys_data$Well_position <- Well_position[1:num_samples]
 
 raw_map(
     data = ashleys_data$probability,
