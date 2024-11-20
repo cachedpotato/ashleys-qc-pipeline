@@ -355,29 +355,29 @@ if config["use_light_data"] is False:
         script:
             "../scripts/utils/tune_predictions_based_on_threshold.py"
 
-    rule plot_plate:
-        input:
-            labels="{folder}/{sample}/cell_selection/labels.tsv",
-        output:
-            predictions=report(
-                "{folder}/{sample}/plots/plate/ashleys_plate_predictions.pdf",
-                category="Ashleys plate plots",
-                subcategory="{sample}",
-                labels={"Sample": "{sample}", "Plot Type": "Predictions"},
-            ),
-            probabilities=report(
-                "{folder}/{sample}/plots/plate/ashleys_plate_probabilities.pdf",
-                category="Ashleys plate plots",
-                subcategory="{sample}",
-                labels={"Sample": "{sample}", "Plot Type": "Probabilities"},
-            ),
-            well_table="{folder}/{sample}/plots/plate/ashleys_well_table.tsv",
-        log:
-            "{folder}/log/plot_plate/{sample}.log",
-        conda:
-            "../envs/ashleys_rtools.yaml"
-        script:
-            "../scripts/plotting/plot_plate.R"
+    #rule plot_plate:
+    #    input:
+    #        labels="{folder}/{sample}/cell_selection/labels.tsv",
+    #    output:
+    #        predictions=report(
+    #            "{folder}/{sample}/plots/plate/ashleys_plate_predictions.pdf",
+    #            category="Ashleys plate plots",
+    #            subcategory="{sample}",
+    #            labels={"Sample": "{sample}", "Plot Type": "Predictions"},
+    #        ),
+    #        probabilities=report(
+    #            "{folder}/{sample}/plots/plate/ashleys_plate_probabilities.pdf",
+    #            category="Ashleys plate plots",
+    #            subcategory="{sample}",
+    #            labels={"Sample": "{sample}", "Plot Type": "Probabilities"},
+    #        ),
+    #        well_table="{folder}/{sample}/plots/plate/ashleys_well_table.tsv",
+    #    log:
+    #        "{folder}/log/plot_plate/{sample}.log",
+    #    conda:
+    #        "../envs/ashleys_rtools.yaml"
+    #    script:
+    #        "../scripts/plotting/plot_plate.R"
 
 elif config["use_light_data"] is True:
 
