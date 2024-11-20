@@ -16,9 +16,6 @@ if (num_samples <= 96) {
     plate_type <- 1536
 }
 
-
-plate_type
-
 ashleys_data <- dplyr::arrange(ashleys_data, cell)
 colnames(ashleys_data)[1] <- "ashleys_id"
 
